@@ -29,9 +29,9 @@ function mortgageCalculator(principal, intrestRate, years, creditScore) {
 
     let numerator = ((monthlyInterestRate) * (Math.pow((1 + (monthlyInterestRate)), periods)));
 
-    let denominator = ((Math.pow((1 + (monthlyInterestRate)), periods)) - 1);
+    let denominators = ((Math.pow((1 + (monthlyInterestRate)), periods)) - 1);
     
-    let monthlyRate = (principal * (numerator / denominator)).toFixed(2);
+    let monthlyRate = (principal * (numerator / denominators)).toFixed(2);
 
     return monthlyRate;
     //console.log(name + ", your monthly rate is " + monthlyRate);
@@ -61,9 +61,9 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 
 function variableInterestRate() {
     for(i = 0; i < 10; i++) {
-        intrestRate = intrestRate + 0.005;
+        intrestRate = Math.round((intrestRate + 0.005) * 1000) / 1000;
 
-        console.log(name + ", with an intrest rate of " + (intrestRate).toFixed(3) + ", your monthly rate is " + mortgageCalculator(principal, intrestRate, years, 680))
+        console.log(name + ", with an intrest rate of " + intrestRate + ", your monthly rate is " + mortgageCalculator(principal, intrestRate, years, 680))
     }
 }
 
